@@ -1,18 +1,39 @@
 <!-- Tambahkan ini di bagian head atau sebelum </body> -->
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll('input[type="checkbox"]').forEach(function (checkbox) {
-      const savedKey = "tick-" + checkbox.id;
+document.addEventListener("DOMContentLoaded", function () {
+  const storageKey = "pw-form-checkboxes";
+  const checkboxes = Array.from(
+    document.querySelectorAll('input[type="checkbox"]')
+  );
 
-      // Pulihkan status saat halaman dibuka
-      checkbox.checked = localStorage.getItem(savedKey) === "true";
-
-      // Simpan setiap kali diklik
-      checkbox.addEventListener("change", function () {
-        localStorage.setItem(savedKey, checkbox.checked);
-      });
+  // Pulihkan centang yang sebelumnya disimpan
+  try {
+    const saved = JSON.parse(localStorage.getItem(storageKey) || "[]");
+    checkboxes.forEach((checkbox, index) => {
+      checkbox.checked = saved[index] === true;
     });
+  } catch {
+    // Abaikan data tersimpan yang tidak valid
+  }
+
+  // Buat tombol Simpan
+  const button = document.createElement("button");
+  button.type = "button";
+  button.textContent = "Simpan centang";
+  button.style.cssText =
+    "margin:12px 0;padding:8px 14px;cursor:pointer;";
+  button.addEventListener("click", function () {
+    const states = checkboxes.map(checkbox => checkbox.checked);
+    localStorage.setItem(storageKey, JSON.stringify(states));
+    button.textContent = "Tersimpan ✓";
+    setTimeout(() => {
+      button.textContent = "Simpan centang";
+    }, 1500);
   });
+
+  const table = document.querySelector("table");
+  if (table) table.parentNode.insertBefore(button, table);
+});
 </script>
 
 <!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><title>Link Form KSDM Resmi - WeShare</title>
