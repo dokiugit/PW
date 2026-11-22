@@ -81,7 +81,7 @@
   </table>
 
   <script>
-    const API_URL = "https://script.google.com/macros/s/AKfycbzfts_TbP1Y7sP8lCcwcNjcCYtXa2xbGSrcGvyz4MrOAwLPwxSjiNYNJOYz0nYN_YLOpQ/exec";
+    const API_URL = "https://script.google.com/macros/s/AKfycbw3iKKFjsh9fg6fztVAf3cSTUy_86Yft0vqeecXeScMnToQalEBKxkz32-4jUCA0k2Dgw/exec";
 
     document.addEventListener("DOMContentLoaded", function () {
       const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"]'));
@@ -121,12 +121,8 @@
         statusEl.style.color = "#555";
         statusEl.textContent = "Mengirim ke server...";
         try {
-          const states = checkboxes.map(cb => cb.checked);
-          const res = await fetch(API_URL, {
-            method: "POST",
-            headers: { "Content-Type": "text/plain;charset=utf-8" },
-            body: JSON.stringify(states)
-          });
+          const bits = checkboxes.map(cb => (cb.checked ? "1" : "0")).join("");
+          const res = await fetch(API_URL + "?save=" + bits + "&t=" + Date.now());
           const result = await res.json();
           if (!result.ok) throw new Error(result.error || "Gagal menyimpan.");
           statusEl.textContent = "Tersimpan untuk semua pengguna ✓ (" + new Date().toLocaleTimeString("id-ID") + ")";
