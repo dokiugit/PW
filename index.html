@@ -81,10 +81,7 @@
   </table>
 
   <script>
-    // Ganti dengan URL Web App (/exec) hasil deploy dari Langkah 1
-    const API_URL = "https://script.google.com/macros/s/AKfycbzfts_TbP1Y7sP8lCcwcNjcCYtXa2xbGSrcGvyz4MrOAwLPwxSjiNYNJOYz0nYN_YLOpQ/exec"
-
-;
+    const API_URL = "https://script.google.com/macros/s/AKfycbzfts_TbP1Y7sP8lCcwcNjcCYtXa2xbGSrcGvyz4MrOAwLPwxSjiNYNJOYz0nYN_YLOpQ/exec";
 
     document.addEventListener("DOMContentLoaded", function () {
       const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"]'));
@@ -99,11 +96,6 @@
       }
 
       async function loadStates() {
-        if (API_URL.includes("TEMPEL_URL")) {
-          statusEl.textContent = "Isi API_URL dulu dengan URL Web App Apps Script Anda.";
-          statusEl.style.color = "#b00020";
-          return;
-        }
         setDisabled(true);
         statusEl.style.color = "#555";
         statusEl.textContent = "Memuat status terbaru...";
@@ -124,14 +116,12 @@
       }
 
       async function saveStates() {
-        if (API_URL.includes("TEMPEL_URL")) return;
         setDisabled(true);
         saveBtn.textContent = "Menyimpan...";
         statusEl.style.color = "#555";
         statusEl.textContent = "Mengirim ke server...";
         try {
           const states = checkboxes.map(cb => cb.checked);
-          // Pakai text/plain agar tidak memicu CORS preflight di Apps Script
           const res = await fetch(API_URL, {
             method: "POST",
             headers: { "Content-Type": "text/plain;charset=utf-8" },
