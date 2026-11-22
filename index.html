@@ -1,3 +1,20 @@
+<!-- Tambahkan ini di bagian head atau sebelum </body> -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('input[type="checkbox"]').forEach(function (checkbox) {
+      const savedKey = "tick-" + checkbox.id;
+
+      // Pulihkan status saat halaman dibuka
+      checkbox.checked = localStorage.getItem(savedKey) === "true";
+
+      // Simpan setiap kali diklik
+      checkbox.addEventListener("change", function () {
+        localStorage.setItem(savedKey, checkbox.checked);
+      });
+    });
+  });
+</script>
+
 <!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><title>Link Form KSDM Resmi - WeShare</title>
 <style>body{font-family:Arial,sans-serif;margin:24px;color:#222}h1{font-size:20px}p{font-size:13px;color:#555}
 table{border-collapse:collapse;width:100%;font-size:13px}td,th{border:1px solid #ddd;padding:6px 8px}th{background:#1f3864;color:#fff;text-align:left}
