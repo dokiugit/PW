@@ -1,45 +1,160 @@
-<!-- Tambahkan ini di bagian head atau sebelum </body> -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const storageKey = "pw-form-checkboxes";
-  const checkboxes = Array.from(
-    document.querySelectorAll('input[type="checkbox"]')
-  );
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <title>Link Form KSDM Resmi - WeShare</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; color: #222; }
+    h1 { font-size: 20px; }
+    p { font-size: 13px; color: #555; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; }
+    td, th { border: 1px solid #ddd; padding: 6px 8px; }
+    th { background: #1f3864; color: #fff; text-align: left; }
+    tr.sec td { background: #e8eef7; font-weight: bold; }
+    a { color: #0b57d0; }
+    .toolbar { display: flex; align-items: center; gap: 10px; margin: 12px 0; flex-wrap: wrap; }
+    .toolbar button { padding: 8px 14px; cursor: pointer; border: 1px solid #1f3864; background: #1f3864; color: #fff; border-radius: 4px; }
+    .toolbar button.secondary { background: #fff; color: #1f3864; }
+    .toolbar button:disabled { opacity: 0.6; cursor: not-allowed; }
+    #sync-status { font-size: 13px; color: #555; }
+  </style>
+</head>
+<body>
+  <h1>Form KSDM Resmi Terbaru &ndash; Audit Internal MMK3L 25&ndash;26 Nov 2026</h1>
+  <p>39 form dari WeShare (PW-HCM 2024 r03, PW-HSE 2024 r04, PW-QTY 2024 r04, PW-PROD 2024 r03, PW-MK 2026 r04). Login WeShare dulu di browser Anda, lalu klik tiap nama form untuk mengunduh. Centang kolom kanan sebagai penanda.</p>
 
-  // Pulihkan centang yang sebelumnya disimpan
-  try {
-    const saved = JSON.parse(localStorage.getItem(storageKey) || "[]");
-    checkboxes.forEach((checkbox, index) => {
-      checkbox.checked = saved[index] === true;
+  <div class="toolbar">
+    <button type="button" id="btn-save" disabled>Simpan centang</button>
+    <button type="button" id="btn-refresh" class="secondary">Muat ulang</button>
+    <span id="sync-status">Memuat status centang...</span>
+  </div>
+
+  <table>
+    <tr><th>Form (klik untuk unduh)</th><th>Sumber</th><th>Keterangan</th><th>&#10003;</th></tr>
+    <tr class="sec"><td colspan="4">1_ORGANISASI</td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VVRYL1NRPT0" target="_blank">PW-HCM-01 Kebutuhan Pegawai</a></td><td>PW-HCM 2024 r03</td><td>Pengganti PW-HCM-01 buatan</td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VVRYeFNnPT0" target="_blank">PW-PROD-05 Laporan Pelaksanaan Pegawai di Proyek</a></td><td>PW-PROD 2024 r03</td><td>Dulu Prod 05 (2020)</td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VVRyNlNBPT0" target="_blank">PW-PROD-24 Daftar Tenaga Kerja yg Memerlukan Keahlian</a></td><td>PW-PROD 2024 r03</td><td>Nomor baru; dulu Prod 26</td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VVRYL1NBPT0" target="_blank">PW-HCM-08 Cuti-Izin</a></td><td>PW-HCM 2024 r03</td><td>Pendukung</td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VVRYL1R3PT0" target="_blank">PW-HCM-09 PKP</a></td><td>PW-HCM 2024 r03</td><td>Pendukung</td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VVRyd1RRPT0" target="_blank">PW-HCM-03/04/05 STPD, SPD, LHPD</a></td><td>PW-HCM 2024 r03</td><td>Pendukung</td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VVRYL1RnPT0" target="_blank">PW-HCM-15 Exit Clearance</a></td><td>PW-HCM 2024 r03</td><td>Pendukung</td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VVRYL1RRPT0" target="_blank">PW-HCM-16 Syarat Jab. Fungsional</a></td><td>PW-HCM 2024 r03</td><td>Pendukung</td><td><input type="checkbox"></td></tr>
+    <tr class="sec"><td colspan="4">2_PELATIHAN</td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VURQeFNnPT0" target="_blank">PW-HSE-04-03 Induksi HSE</a></td><td>PW-HSE 2024 r04</td><td>Bukti induksi pegawai</td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VVRmeFRnPT0" target="_blank">PW-QTY-04-01 Induksi Mutu</a></td><td>PW-QTY 2024 r04</td><td>Bukti induksi mutu</td><td><input type="checkbox"></td></tr>
+    <tr class="sec"><td colspan="4">3_KESEHATAN_ASURANSI</td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VURENlR3PT0" target="_blank">PW-HSE-08-11 Register Bulanan Rekaman Kesehatan Pegawai</a></td><td>PW-HSE 2024 r04</td><td>Pengganti versi 2021</td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VURENlF3PT0" target="_blank">PW-HSE-08-14 Rekam Medis Pegawai</a></td><td>PW-HSE 2024 r04</td><td>Pengganti versi 2021</td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VURENlFnPT0" target="_blank">PW-HSE-08-15 Register Keluhan Kesehatan</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VURQeFNBPT0" target="_blank">PW-HSE-04-05 Kuesioner Riwayat Kesehatan Sebelum Bekerja</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr>
+    <tr class="sec"><td colspan="4">4_LIMBAH_EMISI</td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VURQeFRBPT0" target="_blank">PW-HSE-06-01 Identifikasi Sumber Limbah</a></td><td>PW-HSE 2024 r04</td><td>Pengganti versi 2021</td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VURQeFFnPT0" target="_blank">PW-HSE-06-03 Monitoring Penyimpanan Limbah B3</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VURQeFF3PT0" target="_blank">PW-HSE-06-05 Monitoring Serah Terima Limbah B3</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VUREN1R3PT0" target="_blank">PW-HSE-08-20 Rekap Pengukuran Lingkungan</a></td><td>PW-HSE 2024 r04</td><td>Bisa untuk uji emisi</td><td><input type="checkbox"></td></tr>
+    <tr class="sec"><td colspan="4">5_PENGAMANAN_DARURAT</td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VURENFF3PT0" target="_blank">PW-HSE-07-01 Identifikasi Kondisi Darurat</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VURENFFnPT0" target="_blank">PW-HSE-07-02 Daftar No Telp Penting</a></td><td>PW-HSE 2024 r04</td><td>Pengganti form buatan</td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VURENVNnPT0" target="_blank">PW-HSE-07-03 Skenario Simulasi Tanggap Darurat</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VURENFRBPT0" target="_blank">PW-HSE-07-04 Daftar Peralatan Tanggap Darurat</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VURENVNRPT0" target="_blank">PW-HSE-07-05 Evaluasi Simulasi Tanggap Darurat</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VURENVN3PT0" target="_blank">Lampiran PW-HSE-07-01 Struktur Organisasi TGD</a></td><td>PW-HSE 2024 r04</td><td>Pengganti Lamp. Satgas 2021</td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VVRyNlFnPT0" target="_blank">PW-PROD-30 Risalah Rapat</a></td><td>PW-PROD 2024 r03</td><td>Nomor baru; dulu Prod 35</td><td><input type="checkbox"></td></tr>
+    <tr class="sec"><td colspan="4">6_RISIKO_KSDM</td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VURQL1FnPT0" target="_blank">PW-HSE-01-01 HIRADC</a></td><td>PW-HSE 2024 r04</td><td>Identifikasi bahaya/risiko K3</td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VURQd1NnPT0" target="_blank">PW-HSE-01-03 Register HIRADC-IADL</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr>
+    <tr class="sec"><td colspan="4">7_KPI_PROYEK</td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file-reader/VURyN1RnPT0" target="_blank">PW-MK 2026 (rev.04) - form MK-07/08/09 ada di lampiran PDF</a></td><td>PW-MK 2026 r04</td><td>Hanya PDF; form Excel tidak disediakan</td><td><input type="checkbox"></td></tr>
+    <tr class="sec"><td colspan="4">8_AUDIT_QTY_HSE</td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VVRmeFRBPT0" target="_blank">PW-QTY-05-02 Daftar Dokumen</a></td><td>PW-QTY 2024 r04</td><td></td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VVRmeFFnPT0" target="_blank">PW-QTY-05-04 Daftar Bukti Kerja</a></td><td>PW-QTY 2024 r04</td><td>Dulu tidak ada di SharePoint</td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VVRUNFN3PT0" target="_blank">PW-QTY-05-05 Register Dokumen Induk</a></td><td>PW-QTY 2024 r04</td><td></td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VVRUNlR3PT0" target="_blank">PW-QTY-08-05 Checklist Audit</a></td><td>PW-QTY 2024 r04</td><td>Acuan surat audit</td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VVRUNlRnPT0" target="_blank">PW-QTY-08-06 Audit Notes</a></td><td>PW-QTY 2024 r04</td><td></td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VVRUNlRBPT0" target="_blank">PW-QTY-08-08 Umpan Balik Auditee</a></td><td>PW-QTY 2024 r04</td><td></td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VVRUN1NBPT0" target="_blank">PW-QTY-09-04 Register Ketidaksesuaian Mutu</a></td><td>PW-QTY 2024 r04</td><td></td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VUREOFNRPT0" target="_blank">PW-HSE-09-01 Checklist Audit HSE</a></td><td>PW-HSE 2024 r04</td><td>Acuan surat audit</td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VUREOFNnPT0" target="_blank">Checklist Audit SMK3 (PW-HSE-09-02)</a></td><td>PW-HSE 2024 r04</td><td>Acuan surat audit</td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VUREOFRnPT0" target="_blank">PW-HSE-10-03 Laporan Tindakan Korektif</a></td><td>PW-HSE 2024 r04</td><td>Tindak lanjut temuan</td><td><input type="checkbox"></td></tr>
+    <tr><td><a href="https://weshare.waskita.co.id/file/download/VUREOFRRPT0" target="_blank">PW-HSE-10-04 Register Tindakan Perbaikan</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr>
+  </table>
+
+  <script>
+    // Ganti dengan URL Web App (/exec) hasil deploy dari Langkah 1
+    const API_URL = https://script.google.com/macros/s/AKfycbzfts_TbP1Y7sP8lCcwcNjcCYtXa2xbGSrcGvyz4MrOAwLPwxSjiNYNJOYz0nYN_YLOpQ/exec
+
+;
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"]'));
+      const saveBtn = document.getElementById("btn-save");
+      const refreshBtn = document.getElementById("btn-refresh");
+      const statusEl = document.getElementById("sync-status");
+
+      function setDisabled(state) {
+        saveBtn.disabled = state;
+        refreshBtn.disabled = state;
+        checkboxes.forEach(cb => { cb.disabled = state; });
+      }
+
+      async function loadStates() {
+        if (API_URL.includes("TEMPEL_URL")) {
+          statusEl.textContent = "Isi API_URL dulu dengan URL Web App Apps Script Anda.";
+          statusEl.style.color = "#b00020";
+          return;
+        }
+        setDisabled(true);
+        statusEl.style.color = "#555";
+        statusEl.textContent = "Memuat status terbaru...";
+        try {
+          const res = await fetch(API_URL + "?t=" + Date.now());
+          const saved = await res.json();
+          checkboxes.forEach((cb, i) => {
+            cb.checked = Array.isArray(saved) && saved[i] === true;
+          });
+          statusEl.textContent = "Tersinkron ✓";
+          statusEl.style.color = "#137333";
+        } catch (err) {
+          statusEl.textContent = "Gagal memuat data: " + err.message;
+          statusEl.style.color = "#b00020";
+        } finally {
+          setDisabled(false);
+        }
+      }
+
+      async function saveStates() {
+        if (API_URL.includes("TEMPEL_URL")) return;
+        setDisabled(true);
+        saveBtn.textContent = "Menyimpan...";
+        statusEl.style.color = "#555";
+        statusEl.textContent = "Mengirim ke server...";
+        try {
+          const states = checkboxes.map(cb => cb.checked);
+          // Pakai text/plain agar tidak memicu CORS preflight di Apps Script
+          const res = await fetch(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify(states)
+          });
+          const result = await res.json();
+          if (!result.ok) throw new Error(result.error || "Gagal menyimpan.");
+          statusEl.textContent = "Tersimpan untuk semua pengguna ✓ (" + new Date().toLocaleTimeString("id-ID") + ")";
+          statusEl.style.color = "#137333";
+        } catch (err) {
+          statusEl.textContent = "Gagal menyimpan: " + err.message;
+          statusEl.style.color = "#b00020";
+        } finally {
+          saveBtn.textContent = "Simpan centang";
+          setDisabled(false);
+        }
+      }
+
+      saveBtn.addEventListener("click", saveStates);
+      refreshBtn.addEventListener("click", loadStates);
+
+      loadStates();
     });
-  } catch {
-    // Abaikan data tersimpan yang tidak valid
-  }
-
-  // Buat tombol Simpan
-  const button = document.createElement("button");
-  button.type = "button";
-  button.textContent = "Simpan centang";
-  button.style.cssText =
-    "margin:12px 0;padding:8px 14px;cursor:pointer;";
-  button.addEventListener("click", function () {
-    const states = checkboxes.map(checkbox => checkbox.checked);
-    localStorage.setItem(storageKey, JSON.stringify(states));
-    button.textContent = "Tersimpan ✓";
-    setTimeout(() => {
-      button.textContent = "Simpan centang";
-    }, 1500);
-  });
-
-  const table = document.querySelector("table");
-  if (table) table.parentNode.insertBefore(button, table);
-});
-</script>
-
-<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><title>Link Form KSDM Resmi - WeShare</title>
-<style>body{font-family:Arial,sans-serif;margin:24px;color:#222}h1{font-size:20px}p{font-size:13px;color:#555}
-table{border-collapse:collapse;width:100%;font-size:13px}td,th{border:1px solid #ddd;padding:6px 8px}th{background:#1f3864;color:#fff;text-align:left}
-tr.sec td{background:#e8eef7;font-weight:bold}a{color:#0b57d0}</style></head><body>
-<h1>Form KSDM Resmi Terbaru &ndash; Audit Internal MMK3L 25&ndash;26 Nov 2026</h1>
-<p>39 form dari WeShare (PW-HCM 2024 r03, PW-HSE 2024 r04, PW-QTY 2024 r04, PW-PROD 2024 r03, PW-MK 2026 r04). Login WeShare dulu di browser Anda, lalu klik tiap nama form untuk mengunduh. Centang kolom kanan sebagai penanda.</p>
-<table><tr><th>Form (klik untuk unduh)</th><th>Sumber</th><th>Keterangan</th><th>&#10003;</th></tr><tr class="sec"><td colspan="4">1_ORGANISASI</td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VVRYL1NRPT0" target="_blank">PW-HCM-01 Kebutuhan Pegawai</a></td><td>PW-HCM 2024 r03</td><td>Pengganti PW-HCM-01 buatan</td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VVRYeFNnPT0" target="_blank">PW-PROD-05 Laporan Pelaksanaan Pegawai di Proyek</a></td><td>PW-PROD 2024 r03</td><td>Dulu Prod 05 (2020)</td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VVRyNlNBPT0" target="_blank">PW-PROD-24 Daftar Tenaga Kerja yg Memerlukan Keahlian</a></td><td>PW-PROD 2024 r03</td><td>Nomor baru; dulu Prod 26</td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VVRYL1NBPT0" target="_blank">PW-HCM-08 Cuti-Izin</a></td><td>PW-HCM 2024 r03</td><td>Pendukung</td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VVRYL1R3PT0" target="_blank">PW-HCM-09 PKP</a></td><td>PW-HCM 2024 r03</td><td>Pendukung</td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VVRyd1RRPT0" target="_blank">PW-HCM-03/04/05 STPD, SPD, LHPD</a></td><td>PW-HCM 2024 r03</td><td>Pendukung</td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VVRYL1RnPT0" target="_blank">PW-HCM-15 Exit Clearance</a></td><td>PW-HCM 2024 r03</td><td>Pendukung</td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VVRYL1RRPT0" target="_blank">PW-HCM-16 Syarat Jab. Fungsional</a></td><td>PW-HCM 2024 r03</td><td>Pendukung</td><td><input type="checkbox"></td></tr><tr class="sec"><td colspan="4">2_PELATIHAN</td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VURQeFNnPT0" target="_blank">PW-HSE-04-03 Induksi HSE</a></td><td>PW-HSE 2024 r04</td><td>Bukti induksi pegawai</td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VVRmeFRnPT0" target="_blank">PW-QTY-04-01 Induksi Mutu</a></td><td>PW-QTY 2024 r04</td><td>Bukti induksi mutu</td><td><input type="checkbox"></td></tr><tr class="sec"><td colspan="4">3_KESEHATAN_ASURANSI</td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VURENlR3PT0" target="_blank">PW-HSE-08-11 Register Bulanan Rekaman Kesehatan Pegawai</a></td><td>PW-HSE 2024 r04</td><td>Pengganti versi 2021</td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VURENlF3PT0" target="_blank">PW-HSE-08-14 Rekam Medis Pegawai</a></td><td>PW-HSE 2024 r04</td><td>Pengganti versi 2021</td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VURENlFnPT0" target="_blank">PW-HSE-08-15 Register Keluhan Kesehatan</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VURQeFNBPT0" target="_blank">PW-HSE-04-05 Kuesioner Riwayat Kesehatan Sebelum Bekerja</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr><tr class="sec"><td colspan="4">4_LIMBAH_EMISI</td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VURQeFRBPT0" target="_blank">PW-HSE-06-01 Identifikasi Sumber Limbah</a></td><td>PW-HSE 2024 r04</td><td>Pengganti versi 2021</td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VURQeFFnPT0" target="_blank">PW-HSE-06-03 Monitoring Penyimpanan Limbah B3</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VURQeFF3PT0" target="_blank">PW-HSE-06-05 Monitoring Serah Terima Limbah B3</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VUREN1R3PT0" target="_blank">PW-HSE-08-20 Rekap Pengukuran Lingkungan</a></td><td>PW-HSE 2024 r04</td><td>Bisa untuk uji emisi</td><td><input type="checkbox"></td></tr><tr class="sec"><td colspan="4">5_PENGAMANAN_DARURAT</td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VURENFF3PT0" target="_blank">PW-HSE-07-01 Identifikasi Kondisi Darurat</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VURENFFnPT0" target="_blank">PW-HSE-07-02 Daftar No Telp Penting</a></td><td>PW-HSE 2024 r04</td><td>Pengganti form buatan</td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VURENVNnPT0" target="_blank">PW-HSE-07-03 Skenario Simulasi Tanggap Darurat</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VURENFRBPT0" target="_blank">PW-HSE-07-04 Daftar Peralatan Tanggap Darurat</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VURENVNRPT0" target="_blank">PW-HSE-07-05 Evaluasi Simulasi Tanggap Darurat</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VURENVN3PT0" target="_blank">Lampiran PW-HSE-07-01 Struktur Organisasi TGD</a></td><td>PW-HSE 2024 r04</td><td>Pengganti Lamp. Satgas 2021</td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VVRyNlFnPT0" target="_blank">PW-PROD-30 Risalah Rapat</a></td><td>PW-PROD 2024 r03</td><td>Nomor baru; dulu Prod 35</td><td><input type="checkbox"></td></tr><tr class="sec"><td colspan="4">6_RISIKO_KSDM</td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VURQL1FnPT0" target="_blank">PW-HSE-01-01 HIRADC</a></td><td>PW-HSE 2024 r04</td><td>Identifikasi bahaya/risiko K3</td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VURQd1NnPT0" target="_blank">PW-HSE-01-03 Register HIRADC-IADL</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr><tr class="sec"><td colspan="4">7_KPI_PROYEK</td></tr><tr><td><a href="https://weshare.waskita.co.id/file-reader/VURyN1RnPT0" target="_blank">PW-MK 2026 (rev.04) - form MK-07/08/09 ada di lampiran PDF</a></td><td>PW-MK 2026 r04</td><td>Hanya PDF; form Excel tidak disediakan</td><td><input type="checkbox"></td></tr><tr class="sec"><td colspan="4">8_AUDIT_QTY_HSE</td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VVRmeFRBPT0" target="_blank">PW-QTY-05-02 Daftar Dokumen</a></td><td>PW-QTY 2024 r04</td><td></td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VVRmeFFnPT0" target="_blank">PW-QTY-05-04 Daftar Bukti Kerja</a></td><td>PW-QTY 2024 r04</td><td>Dulu tidak ada di SharePoint</td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VVRUNFN3PT0" target="_blank">PW-QTY-05-05 Register Dokumen Induk</a></td><td>PW-QTY 2024 r04</td><td></td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VVRUNlR3PT0" target="_blank">PW-QTY-08-05 Checklist Audit</a></td><td>PW-QTY 2024 r04</td><td>Acuan surat audit</td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VVRUNlRnPT0" target="_blank">PW-QTY-08-06 Audit Notes</a></td><td>PW-QTY 2024 r04</td><td></td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VVRUNlRBPT0" target="_blank">PW-QTY-08-08 Umpan Balik Auditee</a></td><td>PW-QTY 2024 r04</td><td></td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VVRUN1NBPT0" target="_blank">PW-QTY-09-04 Register Ketidaksesuaian Mutu</a></td><td>PW-QTY 2024 r04</td><td></td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VUREOFNRPT0" target="_blank">PW-HSE-09-01 Checklist Audit HSE</a></td><td>PW-HSE 2024 r04</td><td>Acuan surat audit</td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VUREOFNnPT0" target="_blank">Checklist Audit SMK3 (PW-HSE-09-02)</a></td><td>PW-HSE 2024 r04</td><td>Acuan surat audit</td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VUREOFRnPT0" target="_blank">PW-HSE-10-03 Laporan Tindakan Korektif</a></td><td>PW-HSE 2024 r04</td><td>Tindak lanjut temuan</td><td><input type="checkbox"></td></tr><tr><td><a href="https://weshare.waskita.co.id/file/download/VUREOFRRPT0" target="_blank">PW-HSE-10-04 Register Tindakan Perbaikan</a></td><td>PW-HSE 2024 r04</td><td></td><td><input type="checkbox"></td></tr></table></body></html>
+  </script>
+</body>
+</html>
